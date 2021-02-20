@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		868C471725E188A800ABCAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471625E188A800ABCAFC /* AppDelegate.swift */; };
+		868C471925E188A800ABCAFC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 868C471825E188A800ABCAFC /* GameScene.sks */; };
+		868C471B25E188A800ABCAFC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 868C471A25E188A800ABCAFC /* Actions.sks */; };
+		868C471D25E188A800ABCAFC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471C25E188A800ABCAFC /* GameScene.swift */; };
+		868C471F25E188A800ABCAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471E25E188A800ABCAFC /* ViewController.swift */; };
+		868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868C472025E188AA00ABCAFC /* Assets.xcassets */; };
+		868C472425E188AA00ABCAFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868C472225E188AA00ABCAFC /* Main.storyboard */; };
+		868C473025E188AA00ABCAFC /* DockPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C472F25E188AA00ABCAFC /* DockPongTests.swift */; };
+		868C473B25E188AA00ABCAFC /* DockPongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C473A25E188AA00ABCAFC /* DockPongUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		868C472C25E188AA00ABCAFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868C470B25E188A800ABCAFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 868C471225E188A800ABCAFC;
+			remoteInfo = DockPong;
+		};
+		868C473725E188AA00ABCAFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 868C470B25E188A800ABCAFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 868C471225E188A800ABCAFC;
+			remoteInfo = DockPong;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		868C471325E188A800ABCAFC /* DockPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		868C471625E188A800ABCAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		868C471825E188A800ABCAFC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		868C471A25E188A800ABCAFC /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		868C471C25E188A800ABCAFC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		868C471E25E188A800ABCAFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		868C472025E188AA00ABCAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		868C472325E188AA00ABCAFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		868C472525E188AA00ABCAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		868C472625E188AA00ABCAFC /* DockPong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DockPong.entitlements; sourceTree = "<group>"; };
+		868C472B25E188AA00ABCAFC /* DockPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		868C472F25E188AA00ABCAFC /* DockPongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockPongTests.swift; sourceTree = "<group>"; };
+		868C473125E188AA00ABCAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		868C473625E188AA00ABCAFC /* DockPongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockPongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		868C473A25E188AA00ABCAFC /* DockPongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockPongUITests.swift; sourceTree = "<group>"; };
+		868C473C25E188AA00ABCAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		868C471025E188A800ABCAFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C472825E188AA00ABCAFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C473325E188AA00ABCAFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		868C470A25E188A800ABCAFC = {
+			isa = PBXGroup;
+			children = (
+				868C471525E188A800ABCAFC /* DockPong */,
+				868C472E25E188AA00ABCAFC /* DockPongTests */,
+				868C473925E188AA00ABCAFC /* DockPongUITests */,
+				868C471425E188A800ABCAFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		868C471425E188A800ABCAFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				868C471325E188A800ABCAFC /* DockPong.app */,
+				868C472B25E188AA00ABCAFC /* DockPongTests.xctest */,
+				868C473625E188AA00ABCAFC /* DockPongUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		868C471525E188A800ABCAFC /* DockPong */ = {
+			isa = PBXGroup;
+			children = (
+				868C471625E188A800ABCAFC /* AppDelegate.swift */,
+				868C471825E188A800ABCAFC /* GameScene.sks */,
+				868C471A25E188A800ABCAFC /* Actions.sks */,
+				868C471C25E188A800ABCAFC /* GameScene.swift */,
+				868C471E25E188A800ABCAFC /* ViewController.swift */,
+				868C472025E188AA00ABCAFC /* Assets.xcassets */,
+				868C472225E188AA00ABCAFC /* Main.storyboard */,
+				868C472525E188AA00ABCAFC /* Info.plist */,
+				868C472625E188AA00ABCAFC /* DockPong.entitlements */,
+			);
+			path = DockPong;
+			sourceTree = "<group>";
+		};
+		868C472E25E188AA00ABCAFC /* DockPongTests */ = {
+			isa = PBXGroup;
+			children = (
+				868C472F25E188AA00ABCAFC /* DockPongTests.swift */,
+				868C473125E188AA00ABCAFC /* Info.plist */,
+			);
+			path = DockPongTests;
+			sourceTree = "<group>";
+		};
+		868C473925E188AA00ABCAFC /* DockPongUITests */ = {
+			isa = PBXGroup;
+			children = (
+				868C473A25E188AA00ABCAFC /* DockPongUITests.swift */,
+				868C473C25E188AA00ABCAFC /* Info.plist */,
+			);
+			path = DockPongUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		868C471225E188A800ABCAFC /* DockPong */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 868C473F25E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPong" */;
+			buildPhases = (
+				868C470F25E188A800ABCAFC /* Sources */,
+				868C471025E188A800ABCAFC /* Frameworks */,
+				868C471125E188A800ABCAFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DockPong;
+			productName = DockPong;
+			productReference = 868C471325E188A800ABCAFC /* DockPong.app */;
+			productType = "com.apple.product-type.application";
+		};
+		868C472A25E188AA00ABCAFC /* DockPongTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 868C474225E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPongTests" */;
+			buildPhases = (
+				868C472725E188AA00ABCAFC /* Sources */,
+				868C472825E188AA00ABCAFC /* Frameworks */,
+				868C472925E188AA00ABCAFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				868C472D25E188AA00ABCAFC /* PBXTargetDependency */,
+			);
+			name = DockPongTests;
+			productName = DockPongTests;
+			productReference = 868C472B25E188AA00ABCAFC /* DockPongTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		868C473525E188AA00ABCAFC /* DockPongUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 868C474525E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPongUITests" */;
+			buildPhases = (
+				868C473225E188AA00ABCAFC /* Sources */,
+				868C473325E188AA00ABCAFC /* Frameworks */,
+				868C473425E188AA00ABCAFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				868C473825E188AA00ABCAFC /* PBXTargetDependency */,
+			);
+			name = DockPongUITests;
+			productName = DockPongUITests;
+			productReference = 868C473625E188AA00ABCAFC /* DockPongUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		868C470B25E188A800ABCAFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					868C471225E188A800ABCAFC = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					868C472A25E188AA00ABCAFC = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 868C471225E188A800ABCAFC;
+					};
+					868C473525E188AA00ABCAFC = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 868C471225E188A800ABCAFC;
+					};
+				};
+			};
+			buildConfigurationList = 868C470E25E188A800ABCAFC /* Build configuration list for PBXProject "DockPong" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 868C470A25E188A800ABCAFC;
+			productRefGroup = 868C471425E188A800ABCAFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				868C471225E188A800ABCAFC /* DockPong */,
+				868C472A25E188AA00ABCAFC /* DockPongTests */,
+				868C473525E188AA00ABCAFC /* DockPongUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		868C471125E188A800ABCAFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868C471925E188A800ABCAFC /* GameScene.sks in Resources */,
+				868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */,
+				868C471B25E188A800ABCAFC /* Actions.sks in Resources */,
+				868C472425E188AA00ABCAFC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C472925E188AA00ABCAFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C473425E188AA00ABCAFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		868C470F25E188A800ABCAFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868C471F25E188A800ABCAFC /* ViewController.swift in Sources */,
+				868C471D25E188A800ABCAFC /* GameScene.swift in Sources */,
+				868C471725E188A800ABCAFC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C472725E188AA00ABCAFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868C473025E188AA00ABCAFC /* DockPongTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		868C473225E188AA00ABCAFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				868C473B25E188AA00ABCAFC /* DockPongUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		868C472D25E188AA00ABCAFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 868C471225E188A800ABCAFC /* DockPong */;
+			targetProxy = 868C472C25E188AA00ABCAFC /* PBXContainerItemProxy */;
+		};
+		868C473825E188AA00ABCAFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 868C471225E188A800ABCAFC /* DockPong */;
+			targetProxy = 868C473725E188AA00ABCAFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		868C472225E188AA00ABCAFC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				868C472325E188AA00ABCAFC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		868C473D25E188AA00ABCAFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		868C473E25E188AA00ABCAFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		868C474025E188AA00ABCAFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DockPong/DockPong.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DockPong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		868C474125E188AA00ABCAFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DockPong/DockPong.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DockPong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		868C474325E188AA00ABCAFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				INFOPLIST_FILE = DockPongTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DockPong.app/Contents/MacOS/DockPong";
+			};
+			name = Debug;
+		};
+		868C474425E188AA00ABCAFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				INFOPLIST_FILE = DockPongTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DockPong.app/Contents/MacOS/DockPong";
+			};
+			name = Release;
+		};
+		868C474625E188AA00ABCAFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				INFOPLIST_FILE = DockPongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = DockPong;
+			};
+			name = Debug;
+		};
+		868C474725E188AA00ABCAFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CD6845FWL4;
+				INFOPLIST_FILE = DockPongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bendersonsllc.DockPongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = DockPong;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		868C470E25E188A800ABCAFC /* Build configuration list for PBXProject "DockPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				868C473D25E188AA00ABCAFC /* Debug */,
+				868C473E25E188AA00ABCAFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		868C473F25E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				868C474025E188AA00ABCAFC /* Debug */,
+				868C474125E188AA00ABCAFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		868C474225E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPongTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				868C474325E188AA00ABCAFC /* Debug */,
+				868C474425E188AA00ABCAFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		868C474525E188AA00ABCAFC /* Build configuration list for PBXNativeTarget "DockPongUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				868C474625E188AA00ABCAFC /* Debug */,
+				868C474725E188AA00ABCAFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 868C470B25E188A800ABCAFC /* Project object */;
+}
