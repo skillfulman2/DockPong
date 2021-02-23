@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  DockPong
+//  swag
 //
-//  Created by Ryan Remaly on 2/20/21.
+//  Created by Ryan Remaly on 2/21/21.
 //
 
 import Cocoa
@@ -22,11 +22,14 @@ class ViewController: NSViewController {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
+                let trackingArea = NSTrackingArea(rect: view.visibleRect, options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseMoved], owner: self, userInfo: nil)
                 
+                view.addTrackingArea(trackingArea)
                 
                 // Present the scene
                 view.presentScene(scene)
             }
+            
             
             
             view.ignoresSiblingOrder = true
@@ -35,5 +38,8 @@ class ViewController: NSViewController {
             view.showsNodeCount = true
         }
     }
+    
+    
+    
 }
 

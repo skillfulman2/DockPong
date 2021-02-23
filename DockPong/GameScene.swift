@@ -19,21 +19,29 @@ class GameScene: SKScene {
         enemy = self.childNode(withName: "enemy") as! SKSpriteNode
         human = self.childNode(withName: "human") as! SKSpriteNode
         
-        //ball.physicsBody?.applyImpulse(CGVector(dx: 90000, dy: 90000))
+        ball.physicsBody?.applyImpulse(CGVector(dx: 40, dy: 40))
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         border.friction = 0
         border.restitution = 1
         
-        
-        
         self.physicsBody = border
+        
        
     }
+    
+    override func mouseMoved(with event: NSEvent) {
+        let location = event.location(in: self)
+        
+        human.moveUp(location.y)
+    }
+    
+    
     
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        enemy.run(SKAction.moveTo(y: ball.position.y, duration: 0.12))
     }
 }
