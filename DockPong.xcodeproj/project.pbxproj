@@ -12,7 +12,6 @@
 		868C471D25E188A800ABCAFC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471C25E188A800ABCAFC /* GameScene.swift */; };
 		868C471F25E188A800ABCAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471E25E188A800ABCAFC /* ViewController.swift */; };
 		868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868C472025E188AA00ABCAFC /* Assets.xcassets */; };
-		868C472425E188AA00ABCAFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868C472225E188AA00ABCAFC /* Main.storyboard */; };
 		868C473025E188AA00ABCAFC /* DockPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C472F25E188AA00ABCAFC /* DockPongTests.swift */; };
 		868C473B25E188AA00ABCAFC /* DockPongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C473A25E188AA00ABCAFC /* DockPongUITests.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		868C471C25E188A800ABCAFC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		868C471E25E188A800ABCAFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		868C472025E188AA00ABCAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		868C472325E188AA00ABCAFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		868C472525E188AA00ABCAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		868C472625E188AA00ABCAFC /* DockPong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DockPong.entitlements; sourceTree = "<group>"; };
 		868C472B25E188AA00ABCAFC /* DockPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +103,6 @@
 				868C471C25E188A800ABCAFC /* GameScene.swift */,
 				868C471E25E188A800ABCAFC /* ViewController.swift */,
 				868C472025E188AA00ABCAFC /* Assets.xcassets */,
-				868C472225E188AA00ABCAFC /* Main.storyboard */,
 				868C472525E188AA00ABCAFC /* Info.plist */,
 				868C472625E188AA00ABCAFC /* DockPong.entitlements */,
 			);
@@ -235,7 +232,6 @@
 			files = (
 				86243A5025E2DE9E0081CD42 /* GameScene.sks in Resources */,
 				868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */,
-				868C472425E188AA00ABCAFC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,17 +292,6 @@
 			targetProxy = 868C473725E188AA00ABCAFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		868C472225E188AA00ABCAFC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				868C472325E188AA00ABCAFC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		868C473D25E188AA00ABCAFC /* Debug */ = {

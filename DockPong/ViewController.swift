@@ -10,8 +10,12 @@ import SpriteKit
 import GameplayKit
 
 class ViewController: NSViewController {
-
+    
+    
+    var nsView: NSView = NSView()
     @IBOutlet var skView: SKView!
+    var mouseLocation: NSPoint? { self.view.window?.mouseLocationOutsideOfEventStream }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +26,18 @@ class ViewController: NSViewController {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
-                let trackingArea = NSTrackingArea(rect: view.visibleRect, options: [NSTrackingArea.Options.activeAlways ,NSTrackingArea.Options.mouseMoved], owner: self, userInfo: nil)
+                scene.size = view.bounds.size
                 
-                view.addTrackingArea(trackingArea)
                 
+                nsView.subviews.append(view)
+                
+                
+                
+
                 // Present the scene
                 view.presentScene(scene)
+                
+                
             }
             
             
@@ -39,6 +49,10 @@ class ViewController: NSViewController {
         }
     }
     
+    override func viewDidAppear() {
+        print(self.view.window)
+        
+    }
     
     
 }
