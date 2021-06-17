@@ -1,11 +1,8 @@
-//
-//  AppDelegate.swift
-//  Finder
-//
-//  Created by Neil Sardesai on 2/17/21.
-//
+//  DockPong
+//  Changed by Ryan Remaly with help from Neil Sardesi
 
 import Cocoa
+import SwiftUI
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -13,17 +10,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Properties
     
     private let contentView = NSImageView(image: NSImage(named: .base)!)
-        
-    private let eyes: NSImageView = {
-        let eyes = NSImageView(image: NSImage(named: .eyes)!)
+    
+    private let bounds: NSImageView = {
+        let bounds = NSImageView(image: NSImage(named: .bounds)!)
+        bounds.imageScaling = .scaleAxesIndependently
+        return bounds
+    }()
+    
+    private let rPaddle: NSImageView = {
+        let rPaddle = NSImageView(image: NSImage(named: .rPaddle)!)
+        rPaddle.imageScaling = .scaleAxesIndependently
+        return rPaddle
+    }()
+    
+    private let lPaddle: NSImageView = {
+        let lPaddle = NSImageView(image: NSImage(named: .rPaddle)!)
+        lPaddle.imageScaling = .scaleAxesIndependently
+        return lPaddle
+    }()
+    
+    private let ball: NSImageView = {
+        let eyes = NSImageView(image: NSImage(named: .ball)!)
         eyes.imageScaling = .scaleAxesIndependently
         return eyes
     }()
     
-    private weak var hoverAnimationTimer: Timer?
-
+    private var right: Bool?
+    private var up: Bool?
+    private var score1 = 0
+    private var score2 = 0
+    
+    private weak var moveBallTimer: Timer?
+    private weak var moveLeftPaddleTimer: Timer?
+    
     // MARK: - Lifecycle
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if !AXIsProcessTrusted() {
             let alert = NSAlert()
@@ -36,19 +56,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        activateTheRealFinder()
+        contentView.addSubview(bounds)
+        contentView.addSubview(rPaddle)
+        contentView.addSubview(lPaddle)
+        contentView.addSubview(ball)
         
-        contentView.addSubview(eyes)
-        eyes.frame = NSRect(origin: .baseEyesOrigin, size: eyes.image!.size)
+        
+        bounds.frame = NSRect(origin: .baseBoundsOrigin, size: bounds.image!.size)
+        rPaddle.frame = NSRect(origin: .baseRPaddleOrigin, size: rPaddle.image!.size)
+        lPaddle.frame =  NSRect(origin: .baseLPaddleOrigin, size: lPaddle.image!.size)
+        ball.frame = NSRect(origin: .baseBallOrigin, size: ball.image!.size)
         
         NSApp.dockTile.contentView = contentView
+        self.right = true
+        self.up = true
+        self.moveLeftPaddle()
+        self.moveBall()
         NSApp.dockTile.display()
-                
+        
+        
         NSEvent.addLocalMonitorForEvents(
             matching: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged]
         ) { [weak self] in
             guard let self = self else { return $0 }
             self.updateEyes()
+            //self.updateBall()
             NSApp.dockTile.display()
             return $0
         }
@@ -58,106 +90,108 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ) { [weak self] _ in
             guard let self = self else { return }
             self.updateEyes()
+            //self.updateBall()
             NSApp.dockTile.display()
         }
-         
-        let blinkTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
-            if Bool.random() { self?.performBlinkAnimation() }
-        }
-        blinkTimer.tolerance = 1
+        
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
-        activateTheRealFinder()
+        
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        openTheRealFinder()
+        
         return false
     }
     
-    private func activateTheRealFinder() {
-        guard AXIsProcessTrusted() else { return }
-
-        NSWorkspace.shared.runningApplications
-            .first { $0.bundleIdentifier == .realFinderBundleId }?
-            .activate(options: [])
-    }
     
-    private func openTheRealFinder() {
-        guard AXIsProcessTrusted() else { return }
-
-        let appUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: .realFinderBundleId)!
-        NSWorkspace.shared.openApplication(
-            at: appUrl,
-            configuration: NSWorkspace.OpenConfiguration(),
-            completionHandler: nil
-        )
-    }
     
     // MARK: - Animations
     
-    private func performBlinkAnimation() {
-        var blinkSpeed: CGFloat = -0.5
+    
+    
+    
+    private func moveBall() {
         
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] timer in
+        
+        guard moveBallTimer == nil else { return }
+        
+        moveBallTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self]
+            _ in
             guard let self = self else { return }
             
-            self.eyes.frame.size.height += blinkSpeed
             
-            if self.eyes.frame.height <= 0 {
-                blinkSpeed = -blinkSpeed
+            if (self.ball.frame.origin.y >= 97) {
+                self.ball.frame.origin.y -= 1
+                self.ball.frame.origin.x += 1
+                self.up! = false
+            } else if (self.ball.frame.origin.y <= 16.7) {
+                self.ball.frame.origin.y += 1
+                self.ball.frame.origin.x -= 1
+                self.up! = true
             }
-            if self.eyes.frame.height >= self.eyes.image!.size.height {
-                self.eyes.frame.size.height = self.eyes.image!.size.height
-                timer.invalidate()
+            
+            else if ((self.ball.frame.origin.x < self.bounds.frame.width - 5 &&
+                        self.right! && !self.up!) || (self.ball.frame.origin.x > 0 && !self.right! && !self.up!)) {
+                self.ball.frame.origin.x += 1
+                self.ball.frame.origin.y -= 1
+                //print("Going Right not hit bounds \(self.right!)")
+                
+            } else if ((self.ball.frame.origin.x < self.bounds.frame.width - 5 &&
+                        self.right! && self.up!) || (self.ball.frame.origin.x > 0 && self.right! && !self.up!)) {
+                self.ball.frame.origin.x += 1
+                self.ball.frame.origin.y += 1
+                //print("Going Right not hit bounds \(self.right!)")
+                
+            } else if (self.ball.frame.origin.x >= self.bounds.frame.width - 5 && self.right!) {
+                self.ball.frame.origin.x = 60
+                self.ball.frame.origin.y = 46
+                self.right = true
+                self.up = false
+                
+                //print("Going Right hit bounds \(self.right!)")
+                
+            } else if (self.ball.frame.origin.x <= 0 && !self.right!) {
+                self.ball.frame.origin.x += 60
+                self.ball.frame.origin.y += 46
+                self.right = true
+                self.up = false
+                //self.right = true
+                
+                
+                //print("Going left hit bounds \(self.right!)")
+            } else {
+                print("not sure \(self.ball.frame.origin.x)")
             }
             
             NSApp.dockTile.display()
         }
+        
     }
     
-    private func performHoverAnimation() {
-        guard hoverAnimationTimer == nil else { return }
+    private func moveLeftPaddle() {
         
-        hoverAnimationTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+        guard moveLeftPaddleTimer == nil else { return }
+        
+        moveLeftPaddleTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self]
+            _ in
             guard let self = self else { return }
             
-            self.eyes.frame.origin.x.round()
-            self.eyes.frame.origin.y.round()
+            self.lPaddle.frame.origin.y = self.ball.frame.origin.y
             
-            if self.eyes.frame.origin.x < NSPoint.baseEyesOrigin.x {
-                self.eyes.frame.origin.x += 1
-            }
-            if self.eyes.frame.origin.x > NSPoint.baseEyesOrigin.x {
-                self.eyes.frame.origin.x -= 1
-            }
-            if self.eyes.frame.origin.y < NSPoint.baseEyesOrigin.y {
-                self.eyes.frame.origin.y += 1
-            }
-            if self.eyes.frame.origin.y > NSPoint.baseEyesOrigin.y {
-                self.eyes.frame.origin.y -= 1
-            }
-            
-            if self.eyes.frame.origin == NSPoint.baseEyesOrigin {
-                self.hoverAnimationTimer?.invalidate()
-                self.hoverAnimationTimer = nil
-                
-                self.eyes.isHidden = true
-                self.contentView.image = NSImage(named: .hover)
-            }
-                        
             NSApp.dockTile.display()
         }
+        
     }
-
-    private func updateEyes() {
+    
+    private func updateBall() {
         guard AXIsProcessTrusted() else { return }
         
         /// The center of the icon in screen space
         var finderOrigin = NSPoint.zero
-        let mouseLocation = NSEvent.mouseLocation
-                        
+        
+        
         if let dockIcon = dockIcon() {
             var values: CFArray?
             if AXUIElementCopyMultipleAttributeValues(
@@ -176,43 +210,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 finderOrigin = NSPoint(
                     x: position.x + size.width / 2.0,
-                    y: NSScreen.main!.frame.height - (position.y + size.height / 2.0)
+                    y: NSScreen.main!.frame.height / 1.2 - (position.y + size.height / 2.0)
                 )
                 
                 // If the pointer is overlapping the icon
-                if mouseLocation.x >= position.x
-                    && mouseLocation.x <= position.x + size.width
-                    && mouseLocation.y <= NSScreen.main!.frame.height - position.y
-                    && mouseLocation.y >= NSScreen.main!.frame.height - position.y - size.height
-                {
-                    performHoverAnimation()
-                    return
-                } else {
-                    hoverAnimationTimer?.invalidate()
-                    hoverAnimationTimer = nil
-                    eyes.isHidden = false
-                    contentView.image = NSImage(named: .base)
-                }
+                
             }
         }
         
-        let mouseXRelativeToFinder = mouseLocation.x - finderOrigin.x
-        let mouseYRelativeToFinder = mouseLocation.y - finderOrigin.y
+        //eyes.frame.origin.x = unitEyeX * horizontalScaleFactor + NSPoint.baseEyesOrigin.x
+        ball.frame.origin.y = finderOrigin.y
         
-        var angle = atan(mouseYRelativeToFinder / mouseXRelativeToFinder)
         
-        if mouseXRelativeToFinder < 0 {
-            angle += .pi
+    }
+    
+    private func updateEyes() {
+        guard AXIsProcessTrusted() else { return }
+        
+        /// The center of the icon in screen space
+        let finderOrigin = NSPoint.zero
+        let mouseLocation = NSEvent.mouseLocation
+        
+        let mouseYRelativeToFinder = mouseLocation.y - finderOrigin.y - 100
+        
+        if (mouseYRelativeToFinder < 16.7) {
+            
+            return
+        } else if (mouseYRelativeToFinder > 86.9) {
+            return
         }
-                
-        let unitEyeX = cos(angle)
-        let unitEyeY = sin(angle)
         
-        let horizontalScaleFactor: CGFloat = 5
-        let verticalScaleFactor: CGFloat = 10
+        rPaddle.frame.origin.y = mouseYRelativeToFinder
         
-        eyes.frame.origin.x = unitEyeX * horizontalScaleFactor + NSPoint.baseEyesOrigin.x
-        eyes.frame.origin.y = unitEyeY * verticalScaleFactor + NSPoint.baseEyesOrigin.y
+        
+        
+        
+        
     }
     
     // MARK: - Accessibility Helpers
@@ -250,9 +283,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 // MARK: - Constants
-
 private extension NSPoint {
-    static let baseEyesOrigin = NSPoint(x: 38, y: 75)
+    static let baseBoundsOrigin = NSPoint(x: 1, y: 16)
+    static let baseRPaddleOrigin = NSPoint(x: 110, y: 46)
+    static let baseBallOrigin = NSPoint(x: 61, y: 46)
+    static let baseLPaddleOrigin = NSPoint(x: 10, y: 46)
 }
 
 private extension String {

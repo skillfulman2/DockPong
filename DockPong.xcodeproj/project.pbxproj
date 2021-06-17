@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86554D55267AD5DF00643805 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86554D53267AD5DF00643805 /* Main.storyboard */; };
 		868C471725E188A800ABCAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C471625E188A800ABCAFC /* AppDelegate.swift */; };
 		868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868C472025E188AA00ABCAFC /* Assets.xcassets */; };
 		868C473025E188AA00ABCAFC /* DockPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C472F25E188AA00ABCAFC /* DockPongTests.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86554D54267AD5DF00643805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		868C471325E188A800ABCAFC /* DockPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DockPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		868C471625E188A800ABCAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		868C472025E188AA00ABCAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		868C471525E188A800ABCAFC /* DockPong */ = {
 			isa = PBXGroup;
 			children = (
+				86554D53267AD5DF00643805 /* Main.storyboard */,
 				868C471625E188A800ABCAFC /* AppDelegate.swift */,
 				86C0CFE9267118AE006088ED /* NSImage.Name Extension.swift */,
 				868C472025E188AA00ABCAFC /* Assets.xcassets */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				868C472125E188AA00ABCAFC /* Assets.xcassets in Resources */,
+				86554D55267AD5DF00643805 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,17 @@
 			targetProxy = 868C473725E188AA00ABCAFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		86554D53267AD5DF00643805 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				86554D54267AD5DF00643805 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		868C473D25E188AA00ABCAFC /* Debug */ = {

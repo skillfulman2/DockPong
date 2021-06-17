@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "Asset 14.png",
+      "filename" : "Asset 5.png",
       "idiom" : "mac",
       "scale" : "1x"
     },
     {
-      "filename" : "Asset 14-1.png",
+      "filename" : "Asset 5@2x.png",
       "idiom" : "mac",
       "scale" : "2x"
     }
