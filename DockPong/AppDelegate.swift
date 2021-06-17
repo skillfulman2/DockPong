@@ -35,8 +35,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return eyes
     }()
     
-    private var right: Bool?
-    private var up: Bool?
+    let frame = CGRect(origin: CGPoint(x: 30, y: 100), size: CGSize(width: 30, height: 30))
+    let frame2 = CGRect(origin: CGPoint(x: 85, y: 100), size: CGSize(width: 30, height: 30))
+    
+    var view: NSView?
+    var view2: NSView?
+    
+    
+    private var direction = Directions.nW
     private var score1 = 0
     private var score2 = 0
     
@@ -55,11 +61,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 _ = AXIsProcessTrustedWithOptions(options as CFDictionary)
             }
         }
+        self.view = NSView(frame: self.frame)
+        
+        self.view2 = NSView(frame: self.frame2)
+        
+        
+        let score1View = NSTextField(string: "\(self.score1)")
+        let score2View = NSTextField(string: "\(self.score2)")
+        
+        score1View.textColor = NSColor.white
+        score1View.backgroundColor = NSColor.clear
+     
+        score1View.isBordered = false
+        
+        score2View.textColor = NSColor.white
+        score2View.backgroundColor = NSColor.clear
+        score2View.isBordered = false
+        
+        self.view!.layer?.backgroundColor = NSColor.clear.cgColor
+        self.view!.layer?.backgroundColor = NSColor.clear.cgColor
+        
+        self.view!.addSubview(score1View)
+        self.view2!.addSubview(score2View)
+        
+
+        self.view!.wantsLayer = true
+        self.view2!.wantsLayer = true
         
         contentView.addSubview(bounds)
         contentView.addSubview(rPaddle)
         contentView.addSubview(lPaddle)
         contentView.addSubview(ball)
+        contentView.addSubview(self.view!)
+        contentView.addSubview(self.view2!)
         
         
         bounds.frame = NSRect(origin: .baseBoundsOrigin, size: bounds.image!.size)
@@ -68,18 +102,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ball.frame = NSRect(origin: .baseBallOrigin, size: ball.image!.size)
         
         NSApp.dockTile.contentView = contentView
-        self.right = true
-        self.up = true
         self.moveLeftPaddle()
-        self.moveBall()
+        
         NSApp.dockTile.display()
         
-        
+        self.moveBall()
         NSEvent.addLocalMonitorForEvents(
             matching: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged]
         ) { [weak self] in
             guard let self = self else { return $0 }
-            self.updateEyes()
+            self.moveRightPaddle()
             //self.updateBall()
             NSApp.dockTile.display()
             return $0
@@ -89,7 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             matching: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged]
         ) { [weak self] _ in
             guard let self = self else { return }
-            self.updateEyes()
+            self.moveRightPaddle()
             //self.updateBall()
             NSApp.dockTile.display()
         }
@@ -122,48 +154,77 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             guard let self = self else { return }
             
             
-            if (self.ball.frame.origin.y >= 97) {
+            // Just going to stick with these 4 directions of the ball for simplicity sake
+            // The open source community can change it as they deem fit
+            switch self.direction {
+            
+            case .nE:
+                self.ball.frame.origin.y += 1
+                self.ball.frame.origin.x += 1
+            case .sE:
                 self.ball.frame.origin.y -= 1
                 self.ball.frame.origin.x += 1
-                self.up! = false
-            } else if (self.ball.frame.origin.y <= 16.7) {
+            case .sW:
+                self.ball.frame.origin.y -= 1
+                self.ball.frame.origin.x -= 1
+            case .nW:
                 self.ball.frame.origin.y += 1
                 self.ball.frame.origin.x -= 1
-                self.up! = true
+                
+            }
+            if (self.ball.frame.origin.y >= 97) {
+                if self.direction == .nE {
+                    self.direction = .sE
+                } else {
+                    self.direction = .sW
+                }
+            } else if (self.ball.frame.origin.y <= 16.7) {
+                if self.direction == .sE {
+                    self.direction = .nE
+                } else {
+                    self.direction = .nW
+                }
+            } else if ((self.ball.frame.origin.y >= self.rPaddle.frame.origin.y - 5 && self.ball.frame.origin.y <= self.rPaddle.frame.origin.y + self.rPaddle.frame.height) && (self.ball.frame.origin.x >= self.rPaddle.frame.origin.x - 4 && self.ball.frame.origin.x <= self.rPaddle.frame.origin.x + 3.5  )) {
+                if self.direction == .nE {
+                    self.direction = .nW
+                } else {
+                    self.direction = .sW
+                }
+            } else if ((self.ball.frame.origin.y >= self.lPaddle.frame.origin.y - 5 && self.ball.frame.origin.y <= self.lPaddle.frame.origin.y + self.lPaddle.frame.height) && (self.ball.frame.origin.x <= self.lPaddle.frame.origin.x + 4 && self.ball.frame.origin.x >= self.lPaddle.frame.origin.x - 3.5)) {
+                if self.direction == .nW {
+                    self.direction = .nE
+                } else {
+                    self.direction = .sE
+                }
+            } else if (self.ball.frame.origin.x >= self.rPaddle.frame.origin.x + 20) {
+                self.score1 += 1
+                let score1View = NSTextField(string: "\(self.score1)")
+                
+                score1View.textColor = NSColor.white
+                score1View.backgroundColor = NSColor.black
+             
+                score1View.isBordered = false
+                self.view?.replaceSubview(score1View, with: score1View)
+                self.view?.addSubview(score1View)
+                
+                self.direction = .nW
+                self.ball.frame.origin.x = 61
+                self.ball.frame.origin.y = 46
+            } else if (self.ball.frame.origin.x <= self.lPaddle.frame.origin.x - 20) {
+                self.score2 += 1
+                let score1View = NSTextField(string: "\(self.score2)")
+                
+                score1View.textColor = NSColor.white
+                score1View.backgroundColor = NSColor.black
+             
+                score1View.isBordered = false
+                self.view2?.addSubview(score1View)
+                
+                self.direction = .nE
+                self.ball.frame.origin.x = 61
+                self.ball.frame.origin.y = 46
             }
             
-            else if ((self.ball.frame.origin.x < self.bounds.frame.width - 5 &&
-                        self.right! && !self.up!) || (self.ball.frame.origin.x > 0 && !self.right! && !self.up!)) {
-                self.ball.frame.origin.x += 1
-                self.ball.frame.origin.y -= 1
-                //print("Going Right not hit bounds \(self.right!)")
-                
-            } else if ((self.ball.frame.origin.x < self.bounds.frame.width - 5 &&
-                        self.right! && self.up!) || (self.ball.frame.origin.x > 0 && self.right! && !self.up!)) {
-                self.ball.frame.origin.x += 1
-                self.ball.frame.origin.y += 1
-                //print("Going Right not hit bounds \(self.right!)")
-                
-            } else if (self.ball.frame.origin.x >= self.bounds.frame.width - 5 && self.right!) {
-                self.ball.frame.origin.x = 60
-                self.ball.frame.origin.y = 46
-                self.right = true
-                self.up = false
-                
-                //print("Going Right hit bounds \(self.right!)")
-                
-            } else if (self.ball.frame.origin.x <= 0 && !self.right!) {
-                self.ball.frame.origin.x += 60
-                self.ball.frame.origin.y += 46
-                self.right = true
-                self.up = false
-                //self.right = true
-                
-                
-                //print("Going left hit bounds \(self.right!)")
-            } else {
-                print("not sure \(self.ball.frame.origin.x)")
-            }
             
             NSApp.dockTile.display()
         }
@@ -174,13 +235,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         guard moveLeftPaddleTimer == nil else { return }
         
+        
         moveLeftPaddleTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self]
             _ in
             guard let self = self else { return }
             
-            self.lPaddle.frame.origin.y = self.ball.frame.origin.y
+            self.lPaddle.frame.origin.y = self.ball.frame.origin.y / 1.4
+                NSApp.dockTile.display()
             
-            NSApp.dockTile.display()
         }
         
     }
@@ -213,25 +275,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     y: NSScreen.main!.frame.height / 1.2 - (position.y + size.height / 2.0)
                 )
                 
-                // If the pointer is overlapping the icon
                 
             }
         }
         
-        //eyes.frame.origin.x = unitEyeX * horizontalScaleFactor + NSPoint.baseEyesOrigin.x
         ball.frame.origin.y = finderOrigin.y
         
         
     }
     
-    private func updateEyes() {
+    private func moveRightPaddle() {
         guard AXIsProcessTrusted() else { return }
         
         /// The center of the icon in screen space
         let finderOrigin = NSPoint.zero
         let mouseLocation = NSEvent.mouseLocation
         
-        let mouseYRelativeToFinder = mouseLocation.y - finderOrigin.y - 100
+        let mouseYRelativeToFinder = mouseLocation.y - finderOrigin.y
         
         if (mouseYRelativeToFinder < 16.7) {
             
@@ -241,9 +301,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         rPaddle.frame.origin.y = mouseYRelativeToFinder
-        
-        
-        
         
         
     }
@@ -294,4 +351,13 @@ private extension String {
     static let axChildren = "AXChildren"
     static let dockBundleId = "com.apple.dock"
     static let realFinderBundleId = "com.apple.finder"
+}
+
+
+
+enum Directions {
+    case nW
+    case sW
+    case nE
+    case sE
 }

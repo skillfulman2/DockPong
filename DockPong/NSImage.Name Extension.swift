@@ -9,7 +9,6 @@ import AppKit
 extension NSImage.Name {
     static let base = "base"
     static let rPaddle = "rPaddle"
-    static let hover = "hover"
     static let alert = "alert"
     static let ball = "ball"
     static let bounds = "bounds"
