@@ -65,7 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.view2 = NSView(frame: self.frame2)
         
-        
         let score1View = NSTextField(string: "\(self.score1)")
         let score2View = NSTextField(string: "\(self.score2)")
         
@@ -84,7 +83,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.view!.addSubview(score1View)
         self.view2!.addSubview(score2View)
         
-
         self.view!.wantsLayer = true
         self.view2!.wantsLayer = true
         
@@ -94,7 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         contentView.addSubview(ball)
         contentView.addSubview(self.view!)
         contentView.addSubview(self.view2!)
-        
         
         bounds.frame = NSRect(origin: .baseBoundsOrigin, size: bounds.image!.size)
         rPaddle.frame = NSRect(origin: .baseRPaddleOrigin, size: rPaddle.image!.size)
@@ -202,15 +199,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 score1View.textColor = NSColor.white
                 score1View.backgroundColor = NSColor.black
-             
                 score1View.isBordered = false
-                self.view?.replaceSubview(score1View, with: score1View)
+                
+                self.view?.subviews.remove(at: 0)
                 self.view?.addSubview(score1View)
                 
                 self.direction = .nW
                 self.ball.frame.origin.x = 61
                 self.ball.frame.origin.y = 46
             } else if (self.ball.frame.origin.x <= self.lPaddle.frame.origin.x - 20) {
+                
                 self.score2 += 1
                 let score1View = NSTextField(string: "\(self.score2)")
                 
@@ -218,7 +216,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 score1View.backgroundColor = NSColor.black
              
                 score1View.isBordered = false
+                
+                self.view2?.subviews.remove(at: 0)
                 self.view2?.addSubview(score1View)
+                
+                
                 
                 self.direction = .nE
                 self.ball.frame.origin.x = 61
@@ -313,8 +315,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let processId = appsWithDockBundleId.last?.processIdentifier else { return nil }
         let appElement = AXUIElementCreateApplication(processId)
         guard let firstChild = subelements(from: appElement, forAttribute: .axChildren)?.first else { return nil }
-        // Reverse to avoid picking up the real Finder in case it’s in the Dock.
-        guard let children = subelements(from: firstChild, forAttribute: .axChildren)?.reversed() else { return nil }
+        
+        
+        guard let children = subelements(from: firstChild, forAttribute: .axChildren) else { return nil }
         for axElement in children {
             var value: CFTypeRef?
             if AXUIElementCopyAttributeValue(axElement, kAXTitleAttribute as CFString, &value) == .success {
